@@ -5,7 +5,6 @@
 using namespace std;
 
 void round_robin(vector<Task>& tasks, int quantum) {
-    cout << "Round Robin Scheduling\n";
     queue<Task*> task_queue;  
     int current_time = 0;  
 
@@ -40,8 +39,9 @@ int main() {
         Task("Task3", 8)
     };
 
-    int quantum = 2;  
-    round_robin(tasks, quantum);  
+    int quantum = 2;
+    cout << "Round Robin Scheduling\n";
+    round_robin(tasks, quantum);
 
     return 0;
 }
