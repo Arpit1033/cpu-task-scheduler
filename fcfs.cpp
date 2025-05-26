@@ -1,0 +1,27 @@
+#include <iostream>
+#include "scheduler.h"
+
+using namespace std;
+
+void fcfs(vector<Task> &tasks) {
+    cout << "FCFS Scheduling\n";
+    int current_time = 0;
+
+    for (Task &task : tasks) {
+        task.start_time = current_time;
+        current_time += task.burst_time;
+        task.finish_time = current_time;
+        cout << task.name << ' ' << task.start_time << ' ' << task.finish_time << '\n';
+    }
+}
+
+int main(){
+    vector<Task> tasks = {
+        Task("Task1", 5),
+        Task("Task1", 3),
+        Task("Task1", 8)
+    };
+
+    fcfs(tasks);
+    return 0;
+}
