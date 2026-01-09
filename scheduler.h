@@ -8,5 +8,6 @@ void fcfs(std::vector<Task> &tasks);
 void round_robin(std::vector<Task>& tasks, int quantum);
 void priority_scheduling(std::vector<Task>& tasks);
 void sjf(std::vector<Task>& tasks);
+void srtf(std::vector<Task>& tasks);
 
 #endif
