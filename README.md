@@ -49,31 +49,49 @@ cmake --build . --config Release
 ### Building Manually
 
 ```bash
-g++ -std=c++17 -o fcfs fcfs.cpp
-g++ -std=c++17 -o round_robin round_robin.cpp
-g++ -std=c++17 -o priority_scheduling priority_scheduling.cpp
-g++ -std=c++17 -o sjf sjf.cpp
-g++ -std=c++17 -o srtf srtf.cpp
-g++ -std=c++17 -o multilevel_queue multilevel_queue.cpp
+g++ -std=c++17 -I include -o scheduler src/main.cpp src/algorithms/*.cpp
 ```
 
 ## 📖 Usage
 
-Run any scheduling algorithm:
+Run the unified scheduler CLI:
 
 ```bash
-./fcfs
-./round_robin
-./sjf
-./srtf
-./priority_scheduling
-./multilevel_queue
+./scheduler
 ```
 
-### Example Output (FCFS)
+The interactive CLI will present a menu to select from available scheduling algorithms:
 
 ```
-FCFS Scheduling:
+==============================
+   CPU TASK SCHEDULER CLI     
+==============================
+1. FCFS (First Come First Serve)
+2. Round Robin
+3. Priority Scheduling (Non-Preemptive)
+4. SJF (Shortest Job First)
+5. SRTF (Shortest Remaining Time First)
+6. Multilevel Queue
+0. Exit
+Enter your choice:
+```
+
+### Example Session
+
+```
+Enter your choice: 1
+Enter number of tasks: 3
+Task 1 Name: Task1
+Burst Time: 5
+Priority (optional, default 0): 0
+Task 2 Name: Task2
+Burst Time: 3
+Priority (optional, default 0): 0
+Task 3 Name: Task3
+Burst Time: 8
+Priority (optional, default 0): 0
+
+Running FCFS...
 Task1: start at 0, finish at 5
 Task2: start at 5, finish at 8
 Task3: start at 8, finish at 16
@@ -83,15 +101,22 @@ Task3: start at 8, finish at 16
 
 ```
 cpu-task-scheduler/
-├── Task.h                  # Task class definition
-├── scheduler.h             # Scheduler function declarations
-├── fcfs.cpp                # First Come First Serve
-├── sjf.cpp                 # Shortest Job First
-├── srtf.cpp                # Shortest Remaining Time First
-├── round_robin.cpp         # Round Robin
-├── priority_scheduling.cpp # Priority Scheduling
-├── multilevel_queue.cpp    # Multilevel Queue
+├── include/
+│   ├── Task.h              # Task class definition
+│   └── scheduler.h         # Scheduler function declarations
+├── src/
+│   ├── main.cpp            # Unified CLI entry point
+│   └── algorithms/
+│       ├── fcfs.cpp            # First Come First Serve
+│       ├── sjf.cpp             # Shortest Job First
+│       ├── srtf.cpp            # Shortest Remaining Time First
+│       ├── round_robin.cpp     # Round Robin
+│       ├── priority_scheduling.cpp # Priority Scheduling
+│       └── multilevel_queue.cpp    # Multilevel Queue
 ├── CMakeLists.txt          # CMake build configuration
+├── README.md               # Project documentation
+├── CONTRIBUTING.md         # Contribution guidelines
+├── LICENSE                 # MIT License
 └── .github/workflows/      # CI/CD pipeline
 ```
 
